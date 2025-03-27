@@ -23,7 +23,7 @@ train_datagen = ImageDataGenerator(
 
 train_generator = train_datagen.flow_from_directory(
     'dataset',
-    target_size=(IMG_HEIGHT, IMG_WIDTH),
+    target_size=(224, 224),
     batch_size=32,
     class_mode='binary',
     subset='training'
@@ -31,11 +31,12 @@ train_generator = train_datagen.flow_from_directory(
 
 validation_generator = train_datagen.flow_from_directory(
     'dataset',
-    target_size=(IMG_HEIGHT, IMG_WIDTH),
+    target_size=(224, 224),
     batch_size=32,
     class_mode='binary',
     subset='validation'
 )
+
 
 # Create the base model from MobileNetV2
 base_model = MobileNetV2(input_shape=(IMG_HEIGHT, IMG_WIDTH, 3),
